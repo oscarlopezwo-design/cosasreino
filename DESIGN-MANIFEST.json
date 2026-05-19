@@ -15,6 +15,7 @@
       "signin.html",
       "store.html",
       "tcg-vault-cart.html",
+      "tcg-vault-contact-final-2-2.html",
       "tcg-vault-contact-final-2.html",
       "tcg-vault-contact-final.html",
       "tcg-vault-contact.html",
@@ -32,6 +33,7 @@
       "signin.html",
       "store.html",
       "tcg-vault-cart.html",
+      "tcg-vault-contact-final-2-2.html",
       "tcg-vault-contact-final-2.html",
       "tcg-vault-contact-final.html",
       "tcg-vault-contact.html",
@@ -81,6 +83,11 @@
     },
     {
       "file": "tcg-vault-cart.html",
+      "role": "screen",
+      "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
+    },
+    {
+      "file": "tcg-vault-contact-final-2-2.html",
       "role": "screen",
       "implementationNote": "Preserve visual hierarchy, responsive behavior, and interactive states from this screen."
     },

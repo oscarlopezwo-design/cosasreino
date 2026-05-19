@@ -11,7 +11,7 @@ This archive is the source of truth for turning the design into production code.
 
 ## Source map
 - Primary entry: `index.html`
-- HTML screens detected: 15
+- HTML screens detected: 16
 - Stylesheets detected: 1
 - Script/component files detected: 0
 - Supporting assets detected: 4
@@ -69,6 +69,7 @@ For responsive web exports, treat these as a modern breakpoint system for one ad
 - `signin.html`
 - `store.html`
 - `tcg-vault-cart.html`
+- `tcg-vault-contact-final-2-2.html`
 - `tcg-vault-contact-final-2.html`
 - `tcg-vault-contact-final.html`
 - `tcg-vault-contact.html`
