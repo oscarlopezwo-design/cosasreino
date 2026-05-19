@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournaments — TCG Vault</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .tournament-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 60px 0;
+    }
+
+    .tournament-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 200px 150px;
+      align-items: center;
+      gap: 40px;
+      transition: all 0.2s;
+    }
+
+    .tournament-item:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+    }
+
+    .tournament-item .winner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .winner-avatar {
+      width: 64px;
+      height: 64px;
+      background: var(--accent);
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 24px;
+    }
+
+    .winner-details h3 { font-size: 24px; margin-bottom: 4px; font-weight: 800; }
+    .winner-details p { color: var(--muted); font-size: 14px; font-weight: 600; }
+
+    .deck-info {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 14px;
+      background: var(--accent-soft);
+      padding: 8px 16px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .date { color: var(--muted); font-weight: 700; font-size: 14px; text-align: right; }
+
+    @media (max-width: 768px) {
+      .tournament-item { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+      .winner { flex-direction: column; }
+      .date { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-bar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <span>ADMIN MODE ACTIVE</span>
+      <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 11px; border: none;" onclick="openModal('resultModal')">+ LOG NEW RESULT</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <a href="index.html" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="store.html">Tienda</a></li>
+          <li><a href="tournaments.html">Torneos</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="signin.html" class="btn btn-secondary" style="padding: 12px 24px;">Iniciar sesion</a>
+        <a href="cart.html" class="btn btn-primary" style="padding: 12px 24px;">Carrito (2)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <div class="section-header">
+        <h2>Tournament History</h2>
+        <div style="display: flex; gap: 12px;">
+          <button class="btn btn-secondary" style="padding: 10px 20px;">Export CSV</button>
+        </div>
+      </div>
+
+      <div class="tournament-list" id="tournamentList">
+        <div class="tournament-item">
+          <div class="winner">
+            <div class="winner-avatar">A</div>
+            <div class="winner-details">
+              <h3>Alex Rivers</h3>
+              <p>Winner — Spring Open 2026</p>
+            </div>
+          </div>
+          <div class="deck-info">Mana Burn Deck</div>
+          <div class="date">May 15, 2026</div>
+        </div>
+
+        <div class="tournament-item">
+          <div class="winner">
+            <div class="winner-avatar">M</div>
+            <div class="winner-details">
+              <h3>Maya Chen</h3>
+              <p>Winner — Friday Night Magic</p>
+            </div>
+          </div>
+          <div class="deck-info">Sliver Swarm</div>
+          <div class="date">May 08, 2026</div>
+        </div>
+
+        <div class="tournament-item">
+          <div class="winner">
+            <div class="winner-avatar">J</div>
+            <div class="winner-details">
+              <h3>Jordan Smith</h3>
+              <p>Winner — Retro Draft</p>
+            </div>
+          </div>
+          <div class="deck-info">Goblins Tribal</div>
+          <div class="date">May 01, 2026</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px;">
+        <div>
+          <a href="#" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+          <p style="color: var(--muted); margin-top: 24px; max-width: 320px;">Your ultimate destination for trading cards and competitive play since 2024.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Explorar</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li><a href="store.html" style="color: inherit; text-decoration: none;">Tienda</a></li>
+            <li><a href="tournaments.html" style="color: inherit; text-decoration: none;">Torneos</a></li>
+            <li><a href="contact.html" style="color: inherit; text-decoration: none;">Contacto</a></li>
+            <li>Sobre Nosotros</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom: 24px;">Community</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li>Discord</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border); margin-top: 80px; padding-top: 40px; color: #777; font-size: 14px;">
+        © 2026 TCG Vault. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <h3 style="margin-bottom: 24px; font-size: 24px;">Log Tournament Result</h3>
+      <div class="form-group">
+        <label>Winner Name</label>
+        <input type="text" id="winnerName" placeholder="e.g. John Doe">
+      </div>
+      <div class="form-group">
+        <label>Tournament Title</label>
+        <input type="text" id="tournamentTitle" placeholder="e.g. Summer Cup 2026">
+      </div>
+      <div class="form-group">
+        <label>Winning Deck</label>
+        <input type="text" id="deckName" placeholder="e.g. Blue Eyes White Dragon">
+      </div>
+      <div style="display: flex; gap: 12px; margin-top: 32px;">
+        <button class="btn btn-primary" onclick="addResult()" style="flex: 1;">Save Result</button>
+        <button class="btn btn-secondary" onclick="closeModal('resultModal')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function addResult() {
+      const name = document.getElementById('winnerName').value;
+      const title = document.getElementById('tournamentTitle').value;
+      const deck = document.getElementById('deckName').value;
+
+      if (!name || !title || !deck) return alert('Please fill in all fields');
+
+      const list = document.getElementById('tournamentList');
+      const item = document.createElement('div');
+      item.className = 'tournament-item';
+      
+      const today = new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+
+      item.innerHTML = `
+        <div class="winner">
+          <div class="winner-avatar">${name.charAt(0).toUpperCase()}</div>
+          <div class="winner-details">
+            <h3>${name}</h3>
+            <p>Winner — ${title}</p>
+          </div>
+        </div>
+        <div class="deck-info">${deck}</div>
+        <div class="date">${today}</div>
+      `;
+      list.prepend(item);
+      closeModal('resultModal');
+      
+      // Reset form
+      document.getElementById('winnerName').value = '';
+      document.getElementById('tournamentTitle').value = '';
+      document.getElementById('deckName').value = '';
+    }
+  </script>
+
+</body>
+</html>

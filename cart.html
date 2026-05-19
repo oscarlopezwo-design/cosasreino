@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart — TCG Vault</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 60px;
+      padding: 60px 0;
+    }
+
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto auto;
+      align-items: center;
+      gap: 32px;
+      padding: 24px;
+      background: var(--surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+
+    .cart-item-image {
+      width: 120px;
+      height: 120px;
+      background: var(--accent-soft);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .cart-item-info h3 { font-size: 20px; margin-bottom: 4px; font-weight: 800; }
+    .cart-item-info p { color: var(--muted); font-size: 14px; }
+
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg);
+      padding: 8px 16px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+    }
+
+    .cart-item-quantity button {
+      background: none;
+      border: none;
+      color: var(--fg);
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .cart-item-price { font-weight: 800; font-size: 20px; color: var(--accent); }
+
+    .cart-summary {
+      background: var(--surface);
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      height: fit-content;
+      position: sticky;
+      top: 140px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .summary-total {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--fg);
+    }
+
+    @media (max-width: 1024px) {
+      .cart-layout { grid-template-columns: 1fr; }
+      .cart-summary { position: static; }
+    }
+
+    @media (max-width: 640px) {
+      .cart-item { grid-template-columns: 80px 1fr; gap: 16px; }
+      .cart-item-image { width: 80px; height: 80px; font-size: 24px; }
+      .cart-item-quantity, .cart-item-price { grid-column: 1 / span 2; justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <a href="index.html" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="store.html">Tienda</a></li>
+          <li><a href="tournaments.html">Torneos</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="signin.html" class="btn btn-secondary" style="padding: 12px 24px;">Iniciar sesion</a>
+        <a href="cart.html" class="btn btn-primary" style="padding: 12px 24px;">Carrito (2)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-header" style="padding-top: 60px;">
+      <h2>Tu Carrito</h2>
+      <a href="store.html" style="color: var(--accent); font-weight: 700; text-decoration: none;">← Seguir Comprando</a>
+    </section>
+
+    <div class="cart-layout">
+      <div class="cart-items">
+        <div class="cart-item">
+          <div class="cart-item-image">🃏</div>
+          <div class="cart-item-info">
+            <h3>Mystery Booster Box</h3>
+            <p>Category: Booster Boxes</p>
+          </div>
+          <div class="cart-item-quantity">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+          </div>
+          <div class="cart-item-price">$120.00</div>
+        </div>
+
+        <div class="cart-item">
+          <div class="cart-item-image">🐉</div>
+          <div class="cart-item-info">
+            <h3>Primal Dragon (Holo)</h3>
+            <p>Category: Single Cards</p>
+          </div>
+          <div class="cart-item-quantity">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+          </div>
+          <div class="cart-item-price">$45.00</div>
+        </div>
+      </div>
+
+      <aside class="cart-summary">
+        <h3 style="font-size: 24px; font-weight: 800; margin-bottom: 32px;">Resumen</h3>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>$165.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Envío</span>
+          <span>$10.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Impuestos</span>
+          <span>$13.20</span>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <span>$188.20</span>
+        </div>
+        <button class="btn btn-primary" style="width: 100%; margin-top: 40px; padding: 20px;">Finalizar Compra</button>
+        <p style="text-align: center; margin-top: 24px; color: var(--muted); font-size: 13px;">Paga de forma segura con tarjeta de crédito o PayPal.</p>
+      </aside>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px;">
+        <div>
+          <a href="#" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+          <p style="color: var(--muted); margin-top: 24px; max-width: 320px;">Your ultimate destination for trading cards and competitive play since 2024.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Explorar</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li><a href="store.html" style="color: inherit; text-decoration: none;">Tienda</a></li>
+            <li><a href="tournaments.html" style="color: inherit; text-decoration: none;">Torneos</a></li>
+            <li><a href="contact.html" style="color: inherit; text-decoration: none;">Contacto</a></li>
+            <li>Sobre Nosotros</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Community</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li>Discord</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border); margin-top: 80px; padding-top: 40px; color: #777; font-size: 14px;">
+        © 2026 TCG Vault. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,175 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — TCG Vault</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <a href="index.html" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="store.html">Tienda</a></li>
+          <li><a href="tournaments.html">Torneos</a></li>
+          <li><a href="contact.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="signin.html" class="btn btn-secondary" style="padding: 12px 24px;">Iniciar sesion</a>
+        <a href="cart.html" class="btn btn-primary" style="padding: 12px 24px;">Carrito (2)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-header" style="padding-top: 60px;">
+      <div>
+        <h2>Contacto</h2>
+        <p style="color: var(--muted); font-size: 18px; max-width: 600px; margin-top: 16px;">¿Tienes alguna duda o quieres organizar un torneo? Escríbenos y te responderemos lo antes posible.</p>
+      </div>
+    </section>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-item">
+          <h4>Ubicación</h4>
+          <p>C. Sierra del Sur 4, Solidaridad, 83116 Hermosillo, Son.</p>
+        </div>
+        <div class="info-item">
+          <h4>Horario</h4>
+          <p>Jueves a Domingo: 11:00 AM — 2:00 PM y de 6:00 PM - 9:00 PM</p>
+        </div>
+        <div class="info-item">
+          <h4>Contacto Directo</h4>
+          <p>Email: elreinodeltcg@gmail.com<br>Tel: +52 55 1234 5678</p>
+        </div>
+        
+        <div class="map-container" style="width: 100%; height: 350px; border-radius: var(--radius-md); overflow: hidden; margin-top: 40px; border: 1px solid var(--border);">
+          <iframe 
+            src="https://maps.google.com/maps?q=C.%20Sierra%20del%20Sur%204,%20Solidaridad,%2083116%20Hermosillo,%20Son.&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <div class="contact-form" id="contact-form-container">
+        <form action="https://formspree.io/f/elreinodeltcg@gmail.com" method="POST" id="contact-form">
+          <div class="form-group">
+            <label for="name">Nombre Completo</label>
+            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo Electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Asunto</label>
+            <select id="subject" name="subject" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--fg); font-family: inherit;">
+              <option>Consulta General</option>
+              <option>Torneos y Eventos</option>
+              <option>Venta de Cartas</option>
+              <option>Problemas con mi Pedido</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" placeholder="¿En qué podemos ayudarte?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 16px; margin-top: 20px;">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const container = document.getElementById('contact-form-container');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      
+      // Show loading state
+      const btn = form.querySelector('button');
+      const originalBtnText = btn.innerText;
+      btn.innerText = 'Enviando...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          container.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 400px; text-align: center; padding: 40px; background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); animation: fadeIn 0.5s ease-out;">
+              <div style="font-size: 64px; margin-bottom: 24px;">✨</div>
+              <h3 style="font-size: 28px; font-weight: 900; margin-bottom: 16px; color: var(--fg);">Gracias por el mensaje</h3>
+              <p style="color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 300px;">Nos pondremos en contacto a la brevedad.</p>
+            </div>
+          `;
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+        alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+        btn.innerText = originalBtnText;
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px;">
+        <div>
+          <a href="#" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+          <p style="color: var(--muted); margin-top: 24px; max-width: 320px;">Tu destino definitivo para cartas coleccionables y juego competitivo desde 2024.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Explorar</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li><a href="store.html" style="color: inherit; text-decoration: none;">Tienda</a></li>
+            <li><a href="tournaments.html" style="color: inherit; text-decoration: none;">Torneos</a></li>
+            <li><a href="contact.html" style="color: inherit; text-decoration: none;">Contacto</a></li>
+            <li>Sobre Nosotros</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Comunidad</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li>Discord</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border); margin-top: 80px; padding-top: 40px; color: #777; font-size: 14px;">
+        © 2026 TCG Vault. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

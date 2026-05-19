@@ -1,0 +1,153 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TCG Vault — The Ultimate Card Store</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <style>
+    /* Hero specialized for index */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 8vw, 120px);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      font-weight: 900;
+      margin-bottom: 32px;
+    }
+
+    .hero-content p {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .hero-image {
+      position: relative;
+      height: 600px;
+      background: var(--accent);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-content p { margin: 0 auto 40px; }
+      .hero-image { height: 400px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+      <a href="index.html" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="store.html">Tienda</a></li>
+          <li><a href="tournaments.html">Torneos</a></li>
+        </ul>
+      </nav>
+      <div style="display: flex; gap: 16px; align-items: center;">
+        <a href="signin.html" class="btn btn-secondary" style="padding: 12px 24px;">Iniciar sesion</a>
+        <a href="cart.html" class="btn btn-primary" style="padding: 12px 24px;">Carrito (2)</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-content">
+        <h1>EL REINO DEL TCG</h1>
+        <p>Tu tienda al norte de la ciudad. El destino premier para coleccionistas de élite.</p>
+        <a href="store.html" class="btn btn-primary">Ver productos</a>
+      </div>
+      <div class="hero-image">
+        <div style="background: oklch(92% 0.01 280); width: 250px; height: 350px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); position: relative; overflow: hidden; transform: rotate(5deg);">
+          <div style="height: 60%; background: linear-gradient(135deg, #6525cc, #a155ff); display: flex; align-items: center; justify-content: center; color: white; font-size: 64px;">✨</div>
+          <div style="padding: 16px;">
+            <div style="height: 8px; width: 60%; background: oklch(85% 0.01 280); margin-bottom: 8px;"></div>
+            <div style="height: 8px; width: 40%; background: oklch(85% 0.01 280);"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="section-header">
+        <h2>Novedades</h2>
+        <a href="store.html" style="color: var(--accent); font-weight: 700; text-decoration: none;">Ver Todo →</a>
+      </div>
+      <div class="product-grid">
+        <a href="store.html" class="product-card">
+          <div class="product-image">🃏</div>
+          <div class="product-info">
+            <h3>Mystery Booster Box</h3>
+            <p class="product-price">$120.00</p>
+          </div>
+        </a>
+        <a href="store.html" class="product-card">
+          <div class="product-image">🐉</div>
+          <div class="product-info">
+            <h3>Primal Dragon (Holo)</h3>
+            <p class="product-price">$45.00</p>
+          </div>
+        </a>
+        <a href="store.html" class="product-card">
+          <div class="product-image">⚡</div>
+          <div class="product-info">
+            <h3>Shock Pulse Deck</h3>
+            <p class="product-price">$29.99</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px;">
+        <div>
+          <a href="#" class="logo"><img src="mpc1t4cl-Diseño-sin-título.png" alt="TCG Vault Logo"></a>
+          <p style="color: var(--muted); margin-top: 24px; max-width: 320px;">Tu destino definitivo para cartas coleccionables y juego competitivo desde 2024.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Explorar</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li>Tienda</li>
+            <li>Torneos</li>
+            <li>Eventos</li>
+            <li>Sobre Nosotros</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="margin-bottom: 24px;">Comunidad</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; color: var(--muted);">
+            <li>Discord</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+          </ul>
+        </div>
+      </div>
+      <div style="border-top: 1px solid var(--border); margin-top: 80px; padding-top: 40px; color: #777; font-size: 14px;">
+        © 2026 TCG Vault. Todos los derechos reservados.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
