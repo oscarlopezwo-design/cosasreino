@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tournament App</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    /* Small overrides to integrate the app */
+    body { padding: 24px 0; }
+    .tourney-panel { background: var(--surface); border-radius: var(--radius-md); padding: 20px; border: 1px solid var(--border); }
+    #playersList li { margin: 8px 0; display:flex; align-items:center; justify-content:space-between }
+    .rounds{display:flex;gap:16px;overflow:auto;margin-top:18px}
+    .round{min-width:260px;background:transparent;padding:10px}
+    .match{background:var(--bg);padding:12px;border-radius:12px;border:1px solid var(--border);margin-bottom:10px}
+    .winner{font-weight:700;color:var(--accent)}
+    .controls{margin-top:10px}
+    input, .btn { font-size:14px }
+    #playerName { padding:12px; border-radius:10px; border:1px solid var(--border); background:var(--bg); color:var(--fg); }
+    .actions { display:flex; gap:10px; align-items:center }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tournament App</h1>
+    <p>Add any number of players, seed randomly, and run a single-elimination bracket.</p>
+
+    <div class="tourney-panel">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:18px">
+        <div style="flex:1">
+          <input id="playerName" placeholder="Player name" />
+        </div>
+        <div class="actions">
+          <button id="addBtn" class="btn btn-secondary">Add</button>
+          <button id="generateBtn" class="btn btn-primary">Generate Bracket</button>
+          <button id="exportBtn" class="btn btn-secondary">Export CSV</button>
+          <button id="resetBtn" class="btn btn-secondary">Reset</button>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:24px;margin-top:18px">
+        <div style="flex:1">
+          <h3>Players</h3>
+          <ul id="playersList"></ul>
+        </div>
+        <div style="flex:2">
+          <h3>Bracket</h3>
+          <div id="rounds" class="rounds"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="tournament.js"></script>
+</body>
+</html>
