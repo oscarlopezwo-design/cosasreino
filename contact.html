@@ -57,8 +57,8 @@
         </div>
       </div>
 
-      <div class="contact-form">
-        <form action="https://formspree.io/f/elreinodeltcg@gmail.com" method="POST">
+      <div class="contact-form" id="contact-form-container">
+        <form action="https://formspree.io/f/elreinodeltcg@gmail.com" method="POST" id="contact-form">
           <div class="form-group">
             <label for="name">Nombre Completo</label>
             <input type="text" id="name" name="name" placeholder="Tu nombre" required="">
@@ -69,7 +69,7 @@
           </div>
           <div class="form-group">
             <label for="subject">Asunto</label>
-            <select id="subject" name="subject">
+            <select id="subject" name="subject" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--fg); font-family: inherit;">
               <option>Consulta General</option>
               <option>Torneos y Eventos</option>
               <option>Venta de Cartas</option>
@@ -80,11 +80,60 @@
             <label for="message">Mensaje</label>
             <textarea id="message" name="message" placeholder="¿En qué podemos ayudarte?"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px;">Enviar Mensaje</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 16px; margin-top: 20px;">Enviar Mensaje</button>
         </form>
       </div>
     </div>
   </main>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const container = document.getElementById('contact-form-container');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      
+      // Show loading state
+      const btn = form.querySelector('button');
+      const originalBtnText = btn.innerText;
+      btn.innerText = 'Enviando...';
+      btn.disabled = true;
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          container.innerHTML = `
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; min-height: 400px; text-align: center; padding: 40px; background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); animation: fadeIn 0.5s ease-out;">
+              <div style="font-size: 64px; margin-bottom: 24px;">✨</div>
+              <h3 style="font-size: 28px; font-weight: 900; margin-bottom: 16px; color: var(--fg);">Gracias por el mensaje</h3>
+              <p style="color: var(--muted); font-size: 18px; line-height: 1.6; max-width: 300px;">Nos pondremos en contacto a la brevedad.</p>
+            </div>
+          `;
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+        btn.innerText = originalBtnText;
+        btn.disabled = false;
+      }
+    });
+  </script>
+
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 
   <footer>
     <div class="container">
